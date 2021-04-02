@@ -22,4 +22,27 @@ public class Tracker {
         }
         return rsl;
     }
+
+    public Item[] findByName(String key) {
+        Item[] rsl = null;
+        for (int index = 0; index < size; index++) {
+            Item item = items[index];
+            if (item.getName().equals(key)) {
+                rsl[index] = item;
+            }
+        }
+        return rsl;
+    }
+
+    public Item[] findAll() {
+        Item rsl[] = null;
+        for (int index = 0; index < size; index++) {
+            Item item = items[index];
+            if (item != null) {
+                rsl[index] = item;
+            }
+        }
+        return rsl;
+
+    }
 }
