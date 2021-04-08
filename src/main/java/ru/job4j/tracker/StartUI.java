@@ -51,10 +51,10 @@ public class StartUI {
                 System.out.print("Enter item's id: ");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item item = tracker.findById(id);
-                if (id != -1) {
-                    System.out.println("Item: " + item.getName());
+                if (item != null) {
+                    System.out.println("Item: " + item);
                 } else {
-                    System.out.println("id not found");
+                    System.out.println("item not found");
                 }
             } else if (select == 5) {
                 System.out.println("Find items by name");
@@ -63,10 +63,10 @@ public class StartUI {
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
                     for (Item item : items) {
-                        System.out.println(item.getId() + " - " + item.getName());
+                        System.out.println(item);
                     }
                 } else {
-                    System.out.println("items not found");
+                    System.out.println("item not found");
                 }
             } else if (select == 6) {
                 run = false;
