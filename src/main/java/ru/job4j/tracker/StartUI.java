@@ -16,7 +16,7 @@ public class StartUI {
         System.out.println("=== Show all items ====");
         Item[] items = tracker.findAll();
         for (Item item : items) {
-            System.out.println(item.getId() + " - " + item.getName());
+            System.out.println(item);
         }
     }
 
