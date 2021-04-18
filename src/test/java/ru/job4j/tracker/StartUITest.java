@@ -99,7 +99,8 @@ public class StartUITest {
     public void whenFindByNameAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Item name"));
+        Item item = new Item("Item name", 1);
+        tracker.add(item);
         Input in = new StubInput(
                 new String[] {"0", item.getName(), "1"}
         );
@@ -108,15 +109,12 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        String id = String.valueOf(item.getId());
-        String name = item.getName();
-        String created = String.valueOf(item.getCreated());
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0. Find items by name" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator() +
                         "Find items by name" + System.lineSeparator() +
-                        "Item{id=" + id + ", name='" + name + "', created=" + created + "}" + System.lineSeparator() +
+                        item.toString() + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. Find items by name" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator()
@@ -127,7 +125,8 @@ public class StartUITest {
     public void whenFindByIdAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Item name", 1));
+        Item item = new Item("Item name", 1);
+        tracker.add(item);
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
@@ -136,15 +135,12 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        String id = String.valueOf(item.getId());
-        String name = item.getName();
-        String created = String.valueOf(item.getCreated());
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0. Find item by Id" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator() +
                         "Find item by Id" + System.lineSeparator() +
-                        "Item{id=" + id + ", name='" + name + "', created=" + created + "}" + System.lineSeparator() +
+                        item.toString() + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. Find item by Id" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator()
